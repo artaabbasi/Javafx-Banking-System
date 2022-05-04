@@ -17,7 +17,16 @@ public class ChooseBankPageController {
     private Button choosebankCreateButton;
     @FXML
     private Button choosebankRefreshButton;
-
+    @FXML
+    private Button backButton;
+    public void back() throws IOException {
+        BankApplication scene = new BankApplication();
+        try {
+            scene.onChangeScene("login_page.fxml");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public void onChoosebankCreateButton(ActionEvent clickEvent) throws IOException {
         BankApplication scene = new BankApplication();
         scene.onChangeScene("create_bank_page.fxml");
@@ -37,10 +46,37 @@ public class ChooseBankPageController {
                         session.bank = bank;
                         session.save();
                         BankApplication scene = new BankApplication();
-                        try {
-                            scene.onChangeScene("customer_bank_page.fxml");
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
+                        boolean flagg = true;
+                        for (UserBank userBank : db.user_banks) {
+                            if (userBank.user.username.equals(session.user.username) && userBank.bank.name.equals(session.bank.name)) {
+                                flagg = false;
+                                session.userBank = userBank;
+                                session.save();
+                                if (userBank.is_approved) {
+                                    try {
+                                        scene.onChangeScene("customer_bank_page.fxml");
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                } else {
+                                    try {
+                                        scene.onChangeScene("user_bank_create_page.fxml");
+                                    } catch (IOException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                }
+                            }
+                        }
+                        if (flagg) {
+                            UserBank userBank = new UserBank(session.user, session.bank);
+                            userBank.save();
+                            session.userBank = userBank;
+                            session.save();
+                            try {
+                                scene.onChangeScene("user_bank_create_page.fxml");
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
                         }
                     }
                 }

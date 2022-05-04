@@ -16,5 +16,6 @@
       <MenuButton fx:id="choosebankMenuButton" layoutX="230.0" layoutY="162.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Banks" />
       <Button fx:id="choosebankCreateButton" layoutX="230.0" layoutY="255.0" mnemonicParsing="false" onAction="#onChoosebankCreateButton" text="Create Bank" />
       <Button fx:id="choosebankRefreshButton" layoutX="397.0" layoutY="162.0" mnemonicParsing="false" onAction="#onChoosebankRefreshButton" text="Refresh" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
    </children>
 </AnchorPane>

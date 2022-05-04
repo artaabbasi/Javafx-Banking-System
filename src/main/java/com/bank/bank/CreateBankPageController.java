@@ -19,7 +19,16 @@ public class CreateBankPageController {
     private Button createbankCreateButton;
     @FXML
     private Label createbankMessageLable;
-
+    @FXML
+    private Button backButton;
+    public void back() throws IOException {
+        BankApplication scene = new BankApplication();
+        try {
+            scene.onChangeScene("choose_bank_page.fxml");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public void onBankCreateButton(ActionEvent clickEvent) throws IOException, InterruptedException {
         FileManager fm = new FileManager();
         DB db = fm.read_object();

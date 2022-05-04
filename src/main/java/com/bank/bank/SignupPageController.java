@@ -21,7 +21,16 @@ public class SignupPageController {
     private TextField signupIDField;
     @FXML
     private PasswordField signupPasswordField;
-
+    @FXML
+    private Button backButton;
+    public void back() throws IOException {
+        BankApplication scene = new BankApplication();
+        try {
+            scene.onChangeScene("login_page.fxml");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public void onSignupButton(ActionEvent clickEvent) throws IOException {
         String username = signupUsernameField.getText();
         String IDcard = signupIDField.getText();

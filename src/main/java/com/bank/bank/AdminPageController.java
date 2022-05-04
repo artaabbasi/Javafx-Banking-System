@@ -25,8 +25,18 @@ public class AdminPageController {
     private Button adminRefreshButton;
     @FXML
     private Button adminCreateService;
-
+    @FXML
+    private Button backButton;
+    public void back() throws IOException {
+        BankApplication scene = new BankApplication();
+        try {
+            scene.onChangeScene("customer_bank_page.fxml");
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     public void onRefreshButton(ActionEvent clickEvent) throws IOException {
+        adminPendingUsersMenu.getItems().clear();
         FileManager fm = new FileManager();
         DB db = fm.read_object();
         SessionManager sm = new SessionManager();
@@ -39,6 +49,7 @@ public class AdminPageController {
                 for (UserBank userBank: db.user_banks){
                     if (userBank.user.username.equals(username)) {
                         userBank.is_approved = true;
+                        userBank.save();
                     }
                 }
             }

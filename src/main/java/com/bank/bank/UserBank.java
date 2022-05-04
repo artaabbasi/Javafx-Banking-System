@@ -1,5 +1,8 @@
 package com.bank.bank;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 import java.io.Serializable;
 
 public class UserBank implements Serializable {
@@ -10,6 +13,7 @@ public class UserBank implements Serializable {
     public String shaba_code;
     public String transfer_code;
     public boolean is_approved;
+    public int balance;
 
     public Bank getBank() {
         return bank;

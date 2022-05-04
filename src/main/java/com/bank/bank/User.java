@@ -1,5 +1,8 @@
 package com.bank.bank;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -7,6 +10,7 @@ public class User implements Serializable {
     public String username;
     public String password;
     public String IDcard;
+
     public User(String username, String password, String IDcard){
         this.password = password;
         this.username = username;

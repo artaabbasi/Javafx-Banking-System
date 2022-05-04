@@ -11,6 +11,8 @@ public class Service implements Serializable {
     public String secend_lable;
     public String thired_label;
     public String description;
+    public boolean has_price;
+    public boolean is_cash;
     public Service(String name){
         this.name = name;
     }

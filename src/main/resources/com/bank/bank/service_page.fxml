@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bank.bank.ServicePageController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.bank.ServicePageController">
+   <children>
+      <Label fx:id="serviceLabel1" layoutX="90.0" layoutY="119.0" text="Label" visible="false" />
+      <Label fx:id="serviceLabel2" layoutX="90.0" layoutY="160.0" text="Label" visible="false" />
+      <Label fx:id="serviceLabel3" layoutX="90.0" layoutY="198.0" text="Label" visible="false" />
+      <Label fx:id="servicePriceLabel" layoutX="92.0" layoutY="270.0" text="Price" visible="false" />
+      <Button fx:id="serviceSubmitButton" layoutX="91.0" layoutY="325.0" mnemonicParsing="false" onAction="#onSubmitButton" text="submit" visible="false" />
+      <TextField fx:id="serviceField1" layoutX="187.0" layoutY="115.0" visible="false" />
+      <TextField fx:id="serviceField2" layoutX="187.0" layoutY="156.0" visible="false" />
+      <TextField fx:id="serviceField3" layoutX="187.0" layoutY="194.0" visible="false" />
+      <TextField fx:id="servicePriceField" layoutX="187.0" layoutY="266.0" visible="false" />
+      <Button fx:id="serviceStartButton" layoutX="274.0" layoutY="182.0" mnemonicParsing="false" onAction="#onStartButton" text="Start" />
+      <Label fx:id="serviceDescriptLabel" layoutX="118.0" layoutY="14.0" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
+   </children>
 </AnchorPane>

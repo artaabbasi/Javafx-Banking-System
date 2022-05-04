@@ -1,6 +1,9 @@
 package com.bank.bank;
 
-public class Bank {
+import java.io.Serializable;
+
+public class Bank implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     public String name;
 
     public Bank (String name){

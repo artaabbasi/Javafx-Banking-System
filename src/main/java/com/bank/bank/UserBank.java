@@ -1,9 +1,15 @@
 package com.bank.bank;
 
-public class UserBank {
+import java.io.Serializable;
+
+public class UserBank implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     public User user;
     public Bank bank;
     public boolean is_admin;
+    public String shaba_code;
+    public String transfer_code;
+    public boolean is_approved;
 
     public Bank getBank() {
         return bank;

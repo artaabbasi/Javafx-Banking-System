@@ -1,10 +1,12 @@
 package com.bank.bank;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private static final long serialVersionUID = 1234567L;
     public String username;
     public String password;
     public String IDcard;
-    public boolean is_approved;
     public User(String username, String password, String IDcard){
         this.password = password;
         this.username = username;

@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.bank.LoginPageController">
    <children>
       <TextField fx:id="loginUsernameField" layoutX="191.0" layoutY="134.0" prefHeight="25.0" prefWidth="225.0" />
@@ -19,8 +18,9 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="loginButton" layoutX="204.0" layoutY="248.0" mnemonicParsing="false" text="Login" />
-      <Button fx:id="loginSignupButton" layoutX="370.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="46.0" text="here" textOverrun="CENTER_ELLIPSIS" />
+      <Button fx:id="loginButton" layoutX="204.0" layoutY="248.0" mnemonicParsing="false" onAction="#onLoginButton" text="Login" />
       <Label layoutX="189.0" layoutY="288.0" prefHeight="17.0" prefWidth="231.0" text="New to our system? signup from" />
+      <Button fx:id="loginSignupButton" layoutX="370.0" layoutY="284.0" mnemonicParsing="false" onAction="#onSignupButton" prefHeight="25.0" prefWidth="46.0" text="here" textOverrun="CENTER_ELLIPSIS" />
+      <Label fx:id="loginMessageLabel" layoutX="204.0" layoutY="225.0" />
    </children>
 </AnchorPane>

@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.bank.CustomerBankPageController">
    <children>
-      <MenuButton fx:id="cubankServiceMenuButton" layoutX="234.0" layoutY="116.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="133.0" text="Services">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
-      </MenuButton>
+      <MenuButton fx:id="cubankServiceMenuButton" layoutX="230.0" layoutY="146.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="133.0" text="Services" visible="false" />
       <Label fx:id="cubankWelcomeLabel" layoutX="131.0" layoutY="39.0" prefHeight="32.0" prefWidth="338.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
+      <Button fx:id="cubankStartButton" layoutX="280.0" layoutY="188.0" mnemonicParsing="false" onAction="#onStartButton" text="Start" />
+      <Button fx:id="cubankAdminButton" layoutX="230.0" layoutY="188.0" mnemonicParsing="false" onAction="#onAdminButton" text="admin" visible="false" />
+      <Label fx:id="cubankUsernameLabel" layoutX="16.0" layoutY="293.0" prefHeight="17.0" prefWidth="65.0" text="username :" visible="false" />
+      <Label fx:id="cubankShabaLabel" layoutX="16.0" layoutY="310.0" prefHeight="17.0" prefWidth="76.0" text="shaba code :" visible="false" />
+      <Label fx:id="cubankTransferLabel" layoutX="16.0" layoutY="327.0" text="transfer code :" visible="false" />
+      <Label fx:id="cubankShabaField" layoutX="92.0" layoutY="310.0" visible="false" />
+      <Label fx:id="cubankTransferField" layoutX="103.0" layoutY="327.0" visible="false" />
+      <Label fx:id="cubankUsernameField" layoutX="78.0" layoutY="293.0" visible="false" />
    </children>
 </AnchorPane>

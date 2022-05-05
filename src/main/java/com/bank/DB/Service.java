@@ -1,4 +1,4 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import java.io.Serializable;
 
@@ -29,6 +29,18 @@ public class Service implements Serializable {
     }
 
     public void save(){
+
+        FileManager fm = new FileManager();
+        DB db = fm.read_object();
+        for(Service service:db.services){
+            if(service.name.equals(this.name) && service.bank.name.equals(this.bank.name) ){
+                db.services.remove(service);
+                db.services.add(this);
+            }
+        }
+        fm.write_object(db);
+    }
+    public void store(){
         FileManager fm = new FileManager();
         DB db = fm.read_object();
         db.services.add(this);

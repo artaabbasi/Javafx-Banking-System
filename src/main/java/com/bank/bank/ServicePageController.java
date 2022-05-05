@@ -1,5 +1,6 @@
 package com.bank.bank;
 
+import com.bank.DB.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -78,23 +79,35 @@ public class ServicePageController {
     public void onSubmitButton(ActionEvent clickEvent) throws IOException {
         SessionManager sm = new SessionManager();
         Session session = sm.read_object();
+        String message = "";
+        Logger logger = new Logger();
+
+        Service service = session.service;
         if (serviceField1.isVisible()){
             String field1 = serviceField1.getText();
+            message += " " + service.first_lable + ": " + field1;
         }
         if (serviceField2.isVisible()){
             String field2 = serviceField2.getText();
+            message += " " + service.secend_lable + ": " + field2;
+
         }
         if (serviceField3.isVisible()){
             String field3 = serviceField3.getText();
+            message += " " + service.thired_label + ": " + field3;
         }
         if (servicePriceLabel.isVisible()){
             try {
                 int price = Integer.parseInt(servicePriceField.getText());
                 session.userBank.balance -= price;
+                logger.logger("User balance decreased: user: "+ session.user.username + " Amount: " + Integer.toString(price));
             }catch(Exception e) {
             }
         }
+        logger.logger("Service submitted: user: " + session.user.username + message);
+
         this.back();
+
 
     }
 }

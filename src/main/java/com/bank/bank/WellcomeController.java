@@ -1,10 +1,19 @@
 package com.bank.bank;
+import com.bank.DB.DB;
+import com.bank.DB.FileManager;
+import com.bank.DB.Session;
+import com.bank.DB.SessionManager;
+import com.bank.DB.UserBank;
+import com.bank.DB.User;
+import com.bank.DB.Service;
+import com.bank.DB.Bank;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import java.io.IOException;
+
 
 public class WellcomeController {
     @FXML

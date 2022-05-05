@@ -1,5 +1,6 @@
 package com.bank.bank;
 
+import com.bank.DB.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -61,9 +62,12 @@ public class SignupPageController {
         }
         if (flag){
             User user = new User(username, password, IDcard);
-            user.save();
+            user.store();
             signupMessageLabel.setTextFill(Color.web("#5DF50C"));
             signupMessageLabel.setText("You signed up successfully!");
+            Logger logger = new Logger();
+            logger.logger("New user created: username: " + username + " password: "+ password + " ID card: " +IDcard );
+
             BankApplication scene = new BankApplication();
             scene.onChangeScene("login_page.fxml");
         }

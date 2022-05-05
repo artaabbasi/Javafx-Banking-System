@@ -1,5 +1,6 @@
 package com.bank.bank;
 
+import com.bank.DB.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -59,7 +60,9 @@ public class CreateServicePageController {
                 service.bank = session.bank;
                 service.has_price = servicePriceCheck.isSelected();
                 service.is_cash = serviceCashCheck.isSelected();
-                service.save();
+                service.store();
+                Logger logger = new Logger();
+                logger.logger("New service created: name: " + service.name);
                 BankApplication scene = new BankApplication();
                 scene.onChangeScene("admin_page.fxml");
             }

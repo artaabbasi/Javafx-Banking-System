@@ -1,4 +1,4 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,6 +9,7 @@ public class DB implements Serializable {
     public ArrayList<Bank> banks = new ArrayList<Bank>();
     public ArrayList<UserBank> user_banks = new ArrayList<UserBank>();
     public ArrayList<Service> services = new ArrayList<Service>();
+    public ArrayList<Bill> bills = new ArrayList<Bill>();
 
     public DB(){
 

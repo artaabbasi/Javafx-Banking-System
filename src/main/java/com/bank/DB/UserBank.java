@@ -1,4 +1,4 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -14,6 +14,10 @@ public class UserBank implements Serializable {
     public String transfer_code;
     public boolean is_approved;
     public int balance;
+
+    public UserBank() {
+
+    }
 
     public Bank getBank() {
         return bank;
@@ -36,6 +40,18 @@ public class UserBank implements Serializable {
     }
 
     public void save(){
+
+        FileManager fm = new FileManager();
+        DB db = fm.read_object();
+        for(UserBank userBank:db.user_banks){
+            if(userBank.user.username.equals(this.user.username) && userBank.bank.name.equals(this.bank.name) ){
+                db.user_banks.remove(userBank);
+                db.user_banks.add(this);
+            }
+        }
+        fm.write_object(db);
+    }
+    public void store(){
         FileManager fm = new FileManager();
         DB db = fm.read_object();
         db.user_banks.add(this);

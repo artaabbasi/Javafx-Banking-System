@@ -1,10 +1,10 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import java.io.*;
 
 public class SessionManager {
     public int write_object(Session session){
-        try (FileOutputStream fos = new FileOutputStream("session.dat");
+        try (FileOutputStream fos = new FileOutputStream("src/main/java/com/bank/Files/session.dat");
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
             oos.writeObject(session);
@@ -16,7 +16,7 @@ public class SessionManager {
         }
     }
     public Session read_object(){
-        try (FileInputStream fis = new FileInputStream("session.dat");
+        try (FileInputStream fis = new FileInputStream("src/main/java/com/bank/Files/session.dat");
              ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             Session session = (Session) ois.readObject();

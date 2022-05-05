@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.bank.TransferPageController">
+   <children>
+      <Label layoutX="72.0" layoutY="183.0" text="Shaba" />
+      <Label layoutX="321.0" layoutY="183.0" text="Transfer" />
+      <Label layoutX="108.0" layoutY="102.0" text="Amount" />
+      <Button fx:id="transferShabaButon" layoutX="137.0" layoutY="269.0" mnemonicParsing="false" onAction="#onShabaButton" text="Transfer with shaba" />
+      <Button fx:id="transferTransferButon" layoutX="377.0" layoutY="269.0" mnemonicParsing="false" onAction="#onTransferButton" text="Transfer with transfer code" />
+      <TextField fx:id="transferShabaField" layoutX="122.0" layoutY="179.0" />
+      <TextField fx:id="transferTransferField" layoutX="381.0" layoutY="179.0" />
+      <TextField fx:id="transferAmountField" layoutX="158.0" layoutY="98.0" />
+      <Label fx:id="transferMessageLabel" layoutX="197.0" layoutY="45.0" />
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
+   </children>
+</AnchorPane>

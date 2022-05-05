@@ -1,5 +1,6 @@
 package com.bank.bank;
 
+import com.bank.DB.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -71,8 +72,11 @@ public class CreateBankPageController {
             createbankMessageLable.setTextFill(Color.web("#5DF50C"));
             createbankMessageLable.setText("You created bank successfully!");
             session.save();
-            bank.save();
-            userBank.save();
+            bank.store();
+            userBank.store();
+            Logger logger = new Logger();
+            logger.logger("New Bank created: name: " + bank.name);
+            logger.logger("userbank created: user:" + session.user.username + " Shaba: "+ userBank.shaba_code + " Transfer: " + userBank.transfer_code + " **ADMIN**");
             BankApplication scene = new BankApplication();
             scene.onChangeScene("choose_bank_page.fxml");
         }

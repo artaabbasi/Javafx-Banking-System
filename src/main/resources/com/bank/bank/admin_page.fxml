@@ -31,5 +31,6 @@
       <Label layoutX="213.0" layoutY="232.0" text="Active Services" />
       <Button fx:id="adminCreateService" layoutX="207.0" layoutY="356.0" mnemonicParsing="false" onAction="#onCreateService" text="Create Service" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
+      <Button fx:id="adminBillButton" layoutX="504.0" layoutY="247.0" mnemonicParsing="false" onAction="#onBillButton" text="Create Bill" />
    </children>
 </AnchorPane>

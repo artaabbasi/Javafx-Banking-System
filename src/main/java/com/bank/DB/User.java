@@ -1,4 +1,4 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,10 +17,22 @@ public class User implements Serializable {
         this.IDcard = IDcard;
     }
 
-    public void save(){
+    public void store(){
         FileManager fm = new FileManager();
         DB db = fm.read_object();
         db.users.add(this);
+        fm.write_object(db);
+    }
+    public void save(){
+
+        FileManager fm = new FileManager();
+        DB db = fm.read_object();
+        for(User user:db.users){
+            if(user.username.equals(this.username)){
+                db.users.remove(user);
+                db.users.add(this);
+            }
+        }
         fm.write_object(db);
     }
 }

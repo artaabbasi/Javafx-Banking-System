@@ -1,10 +1,10 @@
-package com.bank.bank;
+package com.bank.DB;
 
 import java.io.*;
 
 public class FileManager {
     public int write_object(DB db){
-        try (FileOutputStream fos = new FileOutputStream("db.dat");
+        try (FileOutputStream fos = new FileOutputStream("src/main/java/com/bank/Files/db.dat");
              ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 
             oos.writeObject(db);
@@ -16,7 +16,7 @@ public class FileManager {
         }
     }
     public DB read_object(){
-        try (FileInputStream fis = new FileInputStream("db.dat");
+        try (FileInputStream fis = new FileInputStream("src/main/java/com/bank/Files/db.dat");
              ObjectInputStream ois = new ObjectInputStream(fis)) {
 
             DB db = (DB) ois.readObject();

@@ -7,7 +7,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
-
+import com.bank.DB.DB;
+import com.bank.DB.FileManager;
+import com.bank.DB.Session;
+import com.bank.DB.SessionManager;
+import com.bank.DB.UserBank;
+import com.bank.DB.User;
+import com.bank.DB.Service;
+import com.bank.DB.Bank;
 import java.io.IOException;
 
 public class LoginPageController {

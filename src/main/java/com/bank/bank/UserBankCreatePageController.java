@@ -1,5 +1,6 @@
 package com.bank.bank;
 
+import com.bank.DB.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -44,8 +45,12 @@ public class UserBankCreatePageController {
         }
         session.userBank.shaba_code = shaba;
         session.userBank.transfer_code = transfer;
-        session.userBank.save();
+        session.userBank.store();
         session.save();
+        Logger logger = new Logger();
+        logger.logger("userbank created: user:" + session.user.username + " Shaba: "+ session.userBank.shaba_code + " Transfer: " + session.userBank.transfer_code);
+        logger.logger("User balance increased: user: "+ session.user.username + " Amount: " + ubcreateDepositField.getText());
+
         BankApplication scene = new BankApplication();
         try {
             scene.onChangeScene("choose_bank_page.fxml");

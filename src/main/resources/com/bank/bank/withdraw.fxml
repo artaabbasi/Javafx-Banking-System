@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bank.bank.WithdrawController">
+   <children>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
+      <Label layoutX="183.0" layoutY="161.0" text="Amount" />
+      <TextField fx:id="withdrawAmountField" layoutX="240.0" layoutY="157.0" />
+      <Button fx:id="withdrawButton" layoutX="274.0" layoutY="241.0" mnemonicParsing="false" onAction="#onWithdrawButton" text="withdraw" />
+      <Label fx:id="withdrawMessageLabel" layoutX="183.0" layoutY="81.0" />
+   </children>
+</AnchorPane>

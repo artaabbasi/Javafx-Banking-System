@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class User implements Serializable {
     private static final long serialVersionUID = 1234567L;
@@ -27,12 +28,11 @@ public class User implements Serializable {
 
         FileManager fm = new FileManager();
         DB db = fm.read_object();
-        for(User user:db.users){
-            if(user.username.equals(this.username)){
-                db.users.remove(user);
-                db.users.add(this);
-            }
-        }
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(this);
+        db.users.remove(users);
+        db.users.add(this);
+
         fm.write_object(db);
     }
 }

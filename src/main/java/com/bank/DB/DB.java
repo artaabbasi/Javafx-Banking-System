@@ -10,6 +10,7 @@ public class DB implements Serializable {
     public ArrayList<UserBank> user_banks = new ArrayList<UserBank>();
     public ArrayList<Service> services = new ArrayList<Service>();
     public ArrayList<Bill> bills = new ArrayList<Bill>();
+    public ArrayList<Loan> loans = new ArrayList<Loan>();
 
     public DB(){
 

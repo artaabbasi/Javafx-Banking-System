@@ -27,5 +27,7 @@
       <Label fx:id="cubankBallanceField" layoutX="67.0" layoutY="344.0" />
       <Button fx:id="cubankTransferButton" layoutX="443.0" layoutY="150.0" mnemonicParsing="false" onAction="#onTransferButton" text="Transfer" visible="false" />
       <Button fx:id="cubankBillButton" layoutX="519.0" layoutY="150.0" mnemonicParsing="false" onAction="#onBillButton" text="Bill" visible="false" />
+      <Button fx:id="cubankWithdrawButton" layoutX="443.0" layoutY="188.0" mnemonicParsing="false" onAction="#onWithdrawButton" text="Withdraw" visible="false" />
+      <Button fx:id="cubankLoanButton" layoutX="525.0" layoutY="188.0" mnemonicParsing="false" onAction="#onLoanButton" text="Loan" visible="false" />
    </children>
 </AnchorPane>

@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class UserBank implements Serializable {
     private static final long serialVersionUID = 1234567L;
@@ -43,12 +44,10 @@ public class UserBank implements Serializable {
 
         FileManager fm = new FileManager();
         DB db = fm.read_object();
-        for(UserBank userBank:db.user_banks){
-            if(userBank.user.username.equals(this.user.username) && userBank.bank.name.equals(this.bank.name) ){
-                db.user_banks.remove(userBank);
-                db.user_banks.add(this);
-            }
-        }
+        ArrayList<UserBank> user_banks = new ArrayList<UserBank>();
+        user_banks.add(this);
+        db.user_banks.remove(user_banks);
+        db.user_banks.add(this);
         fm.write_object(db);
     }
     public void store(){

@@ -1,6 +1,7 @@
 package com.bank.DB;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Service implements Serializable {
     private static final long serialVersionUID = 1234567L;
@@ -32,12 +33,11 @@ public class Service implements Serializable {
 
         FileManager fm = new FileManager();
         DB db = fm.read_object();
-        for(Service service:db.services){
-            if(service.name.equals(this.name) && service.bank.name.equals(this.bank.name) ){
-                db.services.remove(service);
-                db.services.add(this);
-            }
-        }
+        ArrayList<Service> services = new ArrayList<Service>();
+        services.add(this);
+        db.services.remove(services);
+        db.services.add(this);
+
         fm.write_object(db);
     }
     public void store(){

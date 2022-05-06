@@ -41,18 +41,19 @@ public class BillPageController {
         Session session = sm.read_object();
         ObservableList<String> bills = FXCollections.observableArrayList();
         boolean flag = true;
+        billBillsList.getItems().clear();
         for (Bill bill: db.bills){
             if (!bill.payed) {
                 if (!(bill.userBank == null)) {
                     if (bill.userBank.user.username.equals(session.user.username)) {
                         for (String s : bills) {
-                            if (s.equals(bill.name + ":" + Integer.toString(bill.ID) + ":" + Integer.toString(bill.amount))) {
+                            if (s.equals(bill.name + ":" + Integer.toString(bill.ID) + ":" + Integer.toString(bill.amount) + ":" + Boolean.toString(bill.payed))) {
                                 flag = false;
                                 break;
                             }
                         }
                         if (flag) {
-                            bills.add(bill.name + ":" + Integer.toString(bill.ID) + ":" + Integer.toString(bill.amount));
+                            bills.add(bill.name + ":" + Integer.toString(bill.ID) + ":" + Integer.toString(bill.amount)+ ":" + Boolean.toString(bill.payed));
                         }
                         flag = true;
                     }
@@ -89,8 +90,6 @@ public class BillPageController {
                 localbill.save();
                 session.userBank.save();
                 session.save();
-                localbill.payed = true;
-                localbill.save();
                 billIDField.clear();
                 billMessageLabel.setTextFill(Color.web("#5DF50C"));
                 billMessageLabel.setText("You paid successfully!");

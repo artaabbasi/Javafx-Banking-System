@@ -47,6 +47,10 @@ public class CustomerBankPageController {
     @FXML
     private Button cubankBillButton;
     @FXML
+    private Button cubankWithdrawButton;
+    @FXML
+    private Button cubankLoanButton;
+    @FXML
     private Button backButton;
     public void back() throws IOException {
         BankApplication scene = new BankApplication();
@@ -83,6 +87,8 @@ public class CustomerBankPageController {
         cubankShabaLabel.setVisible(true);
         cubankTransferButton.setVisible(true);
         cubankBillButton.setVisible(true);
+        cubankWithdrawButton.setVisible(true);
+        cubankLoanButton.setVisible(true);
         boolean flag = true;
         flag = true;
         EventHandler<ActionEvent> event3 = new EventHandler<ActionEvent>() {
@@ -133,5 +139,14 @@ public class CustomerBankPageController {
     public void onBillButton(ActionEvent clickEvent) throws IOException {
         BankApplication scene = new BankApplication();
         scene.onChangeScene("bill_page.fxml");
+    }
+
+    public void onWithdrawButton(ActionEvent clickEvent) throws IOException {
+        BankApplication scene = new BankApplication();
+        scene.onChangeScene("withdraw.fxml");
+    }
+    public void onLoanButton(ActionEvent clickEvent) throws IOException {
+        BankApplication scene = new BankApplication();
+        scene.onChangeScene("request_loan.fxml");
     }
 }

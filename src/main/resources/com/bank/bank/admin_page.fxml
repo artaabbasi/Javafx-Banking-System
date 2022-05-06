@@ -21,7 +21,7 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <MenuButton fx:id="adminPendingUsersMenu" layoutX="218.0" layoutY="181.0" mnemonicParsing="false" text="Click to accept" />
+      <MenuButton fx:id="adminPendingUsersMenu" layoutX="188.0" layoutY="181.0" mnemonicParsing="false" text="Click to accept" />
       <Label layoutX="75.0" layoutY="249.0" text="Services :">
          <font>
             <Font size="15.0" />
@@ -31,6 +31,8 @@
       <Label layoutX="213.0" layoutY="232.0" text="Active Services" />
       <Button fx:id="adminCreateService" layoutX="207.0" layoutY="356.0" mnemonicParsing="false" onAction="#onCreateService" text="Create Service" />
       <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#back" text="&lt;" />
-      <Button fx:id="adminBillButton" layoutX="504.0" layoutY="247.0" mnemonicParsing="false" onAction="#onBillButton" text="Create Bill" />
+      <Button fx:id="adminBillButton" layoutX="516.0" layoutY="80.0" mnemonicParsing="false" onAction="#onBillButton" text="Create Bill" />
+      <MenuButton fx:id="adminPendingloanMenu" layoutX="461.0" layoutY="181.0" mnemonicParsing="false" text="Click to accept" />
+      <Label layoutX="380.0" layoutY="185.0" text="Pending loan: " />
    </children>
 </AnchorPane>

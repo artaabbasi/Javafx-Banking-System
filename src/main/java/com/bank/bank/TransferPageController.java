@@ -39,36 +39,48 @@ public class TransferPageController {
         SessionManager sm = new SessionManager();
         Session session = sm.read_object();
         DB db = fm.read_object();
-        if (Integer.parseInt(transferAmountField.getText()) > 0) {
+        UserBank localuserBank = new UserBank();
+        boolean flag = true;
+        int amount = 0;
+        try{
+            amount = Integer.parseInt(transferAmountField.getText());
+        } catch(NumberFormatException ex) {
+        }
+        if (amount > 0) {
             for (UserBank userBank : db.user_banks) {
                 if (userBank.transfer_code.equals(transfercode)) {
                     if (userBank.bank.name.equals(session.bank.name)) {
-                        if (session.userBank.balance >= Integer.parseInt(transferAmountField.getText())) {
-                            session.userBank.balance -= Integer.parseInt(transferAmountField.getText());
-                            userBank.balance += Integer.parseInt(transferAmountField.getText());
-                            session.userBank.save();
-                            userBank.save();
-                            session.save();
-                            transferTransferField.clear();
-                            transferAmountField.clear();
-                            transferShabaField.clear();
-                            transferMessageLabel.setTextFill(Color.web("#5DF50C"));
-                            transferMessageLabel.setText("You transferd successfully!");
-                            Logger logger = new Logger();
-                            logger.logger("transfer from transfer code: " + userBank.transfer_code +" user: " + session.user.username + " Transfer: " + session.userBank.transfer_code + " Amount: " + transferAmountField.getText());
-                        } else {
-                            transferMessageLabel.setTextFill(Color.web("#F5130C"));
-                            transferMessageLabel.setText("you dont have enough money in your account!");
-                            transferAmountField.clear();
-                        }
+                        localuserBank = userBank;
                     }else{
                         transferMessageLabel.setTextFill(Color.web("#F5130C"));
                         transferMessageLabel.setText("cant transfer money to another bank with transfer code test shaba");
                         transferTransferField.clear();
+                        flag = false;
                     }
                 }
             }
+            if (session.userBank.balance >= amount && flag) {
+                session.userBank.balance -= amount;
+                localuserBank.balance += amount;
+                session.userBank.save();
+                localuserBank.save();
+                session.save();
+                transferTransferField.clear();
+                transferAmountField.clear();
+                transferShabaField.clear();
+                transferMessageLabel.setTextFill(Color.web("#5DF50C"));
+                transferMessageLabel.setText("You transferd successfully!");
+                Logger logger = new Logger();
+                logger.logger("transfer from transfer code: " + localuserBank.transfer_code +" user: " + session.user.username + " Transfer: " + session.userBank.transfer_code + " Amount: " + transferAmountField.getText());
+                logger.logger("User balance increased: user: " + localuserBank.user.username + " Amount: " +  Integer.toString(amount));
+                logger.logger("User balance decreased: user: " + session.user.username + " Amount: " +  Integer.toString(amount));
+            } else {
+                transferMessageLabel.setTextFill(Color.web("#F5130C"));
+                transferMessageLabel.setText("you dont have enough money in your account!");
+                transferAmountField.clear();
+            }
         }
+
     }
     public void onShabaButton(ActionEvent clickEvent) throws IOException {
         String shaba_code = transferShabaField.getText();

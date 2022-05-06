@@ -23,6 +23,8 @@ public class AdminPageController {
     @FXML
     private MenuButton adminPendingUsersMenu;
     @FXML
+    private MenuButton adminPendingloanMenu;
+    @FXML
     private Button adminRefreshButton;
     @FXML
     private Button adminCreateService;
@@ -45,7 +47,20 @@ public class AdminPageController {
             String muser = mm.getText();
             for (UserBank userBank: db.user_banks){
                 if (userBank.user.username.equals(muser)) {
-                    if (userBank.is_approved == true){
+                    if (userBank.is_approved){
+                        mm.setVisible(false);
+                    }
+                }
+            }
+        }
+        for(MenuItem mm :adminPendingloanMenu.getItems()){
+            String muser = mm.getText();
+            String[] loandataParsed = muser.split(":");
+            String username = loandataParsed[0];
+            int amount = Integer.parseInt(loandataParsed[1]);
+            for (Loan loan: db.loans){
+                if (loan.userBank.user.username.equals(username) && loan.amount == amount) {
+                    if (loan.approved){
                         mm.setVisible(false);
                     }
                 }
@@ -118,6 +133,60 @@ public class AdminPageController {
             }
         }
         adminServiceList.setItems(services);
+        EventHandler<ActionEvent> event5 = new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent e)
+            {
+                String loans = ((MenuItem)e.getSource()).getText();
+                String[] loandataParsed = loans.split(":");
+                String username = loandataParsed[0];
+                int amount = Integer.parseInt(loandataParsed[1]);
+                Loan localLoan = new Loan();
+                for(Loan loan : db.loans){
+                    try {
+                        if (loan.user.username.equals(username) && loan.bank.name.equals(session.bank.name) && loan.amount == amount) {
+                            localLoan = loan;
+                        }
+                    }
+                    catch (Exception ex){
+                        if (loan.user.username.equals(username) && loan.amount == amount) {
+                            localLoan = loan;
+                        }
+                    }
+                }
+
+                localLoan.approved = true;
+                localLoan.userBank.balance += amount;
+                localLoan.userBank.save();
+                localLoan.save();
+                Logger logger = new Logger();
+                try {
+                    logger.logger("Loan approved: user: " + localLoan.userBank.user.username + " amount: " + Integer.toString(amount));
+                    logger.logger("User balance increased: user: " + localLoan.userBank.user.username + " Amount: " + Integer.toString(amount));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+
+            }
+        };
+        for (Loan loan: db.loans) {
+
+            if (loan.userBank.bank.name.equals(session.userBank.bank.name)) {
+                if (!loan.approved) {
+                    flag = true;
+                    String miName = loan.userBank.user.username + ":" + Integer.toString(loan.amount);
+                    MenuItem mi = new MenuItem(miName);
+                    mi.setOnAction(event5);
+                    for (MenuItem m : adminPendingloanMenu.getItems()) {
+                        if (mi.getText().equals(m.getText())) {
+                            flag = false;
+                        }
+                    }
+                    if (flag) {
+                        adminPendingloanMenu.getItems().add(mi);
+                    }
+                }
+            }
+        }
     }
     public void onCreateService(ActionEvent clickEvent) throws IOException {
         BankApplication scene = new BankApplication();
@@ -128,4 +197,5 @@ public class AdminPageController {
         BankApplication scene = new BankApplication();
         scene.onChangeScene("create_bill_page.fxml");
     }
+
 }
